@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">Media Universidad</string>
+    <string name="button1">Mis Datos</string>
+    <string name="button2">Opciones</string>
+    <string name="button3">Acerca De</string>
+    <string name="about">Media Universidad es un proyecto de Ignacio Barrios Palacios, con el fin de facilitar a los alumnos
+         de las universidades españolas a la hora de llevar una seguimiento de las asignaturas aprobadas, así como tener
+          conocimiento de los créditos superados y la media de la carrera.</string>
+</resources>
