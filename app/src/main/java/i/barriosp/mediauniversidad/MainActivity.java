@@ -19,7 +19,8 @@ public class MainActivity extends AppCompatActivity {
 
     public void my_statics(View v) {
         try {
-
+            Intent i = new Intent(this, MyStaticsActivity.class);
+            this.startActivity(i);
         //lanzar el AsyncTask una vez que carga la DB
 
         } catch (Exception e) {

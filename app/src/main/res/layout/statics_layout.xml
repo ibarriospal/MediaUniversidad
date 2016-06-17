@@ -8,12 +8,17 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.upm.dit.adsw.ej7.MyStaticsActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
-    <TextView
+
+    <Button
         android:layout_width="wrap_content"
-        android:layout_height="39dp"
-        android:text="Asignaturas"
-        android:id="@+id/textView"
-        android:layout_weight="0.25" />
+        android:layout_height="wrap_content"
+        android:text="@string/newA"
+        android:id="@+id/nuevaAsignatura"
+        android:onClick="newAsignatura"
+        android:layout_gravity="right" />
+
+
 </LinearLayout>

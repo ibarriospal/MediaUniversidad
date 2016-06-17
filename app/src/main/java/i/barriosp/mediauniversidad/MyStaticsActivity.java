@@ -1,7 +1,9 @@
 package i.barriosp.mediauniversidad;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 
 /**
@@ -15,6 +17,16 @@ public class MyStaticsActivity extends AppCompatActivity{
         setContentView(R.layout.statics_layout);
 
         //vista adaptada
+    }
+
+    public void newAsignatura() {
+        try {
+            Intent i = new Intent(this, NewAsignaturaActivity.class);
+            this.startActivity(i);
+
+        } catch (Exception e) {
+            Toast.makeText(this, "Error", Toast.LENGTH_SHORT).show();
+        }
     }
 
 }

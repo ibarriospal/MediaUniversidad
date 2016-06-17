@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nombre de la Asignatura"
+        android:id="@+id/textViewAsignatura" />
+
+    <EditText
+        android:layout_width="98dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextAsignatura"
+        android:text="Introduce nombre" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nota Obtenida"
+        android:id="@+id/textViewNota" />
+
+    <EditText
+        android:layout_width="29dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextNota" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Guardar"
+        android:id="@+id/buttonSave" />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Cancelar"
+        android:id="@+id/buttonCancel" />
+</LinearLayout>
