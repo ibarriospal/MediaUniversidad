@@ -19,7 +19,7 @@ public class MyStaticsActivity extends AppCompatActivity{
         //vista adaptada
     }
 
-    public void newAsignatura() {
+    public void newAsignatura(Void v) {
         try {
             Intent i = new Intent(this, NewAsignaturaActivity.class);
             this.startActivity(i);

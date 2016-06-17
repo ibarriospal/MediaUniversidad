@@ -13,12 +13,13 @@
 
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="75dp"
+        android:layout_height="38dp"
         android:text="@string/newA"
         android:id="@+id/nuevaAsignatura"
         android:onClick="newAsignatura"
-        android:layout_gravity="right" />
+        android:layout_gravity="right"
+        android:singleLine="false" />
 
 
 </LinearLayout>

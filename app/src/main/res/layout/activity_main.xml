@@ -8,7 +8,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.upm.dit.adsw.ej7.MainActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:weightSum="1">
 
     <Button
         android:layout_width="fill_parent"
@@ -40,10 +41,11 @@
         android:layout_marginTop="84dp" />
 
     <ProgressBar
-        style="?android:attr/progressBarStyleHorizontal"
-        android:layout_width="wrap_content"
+        style="?android:attr/progressBarStyleSmall"
+        android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
-        android:layout_gravity="center_horizontal" />
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="0.10" />
 
 </LinearLayout>
