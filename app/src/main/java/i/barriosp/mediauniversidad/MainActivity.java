@@ -8,8 +8,13 @@ import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class MainActivity extends AppCompatActivity {
+
+   private List<Asignatura> aaa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,15 +24,13 @@ public class MainActivity extends AppCompatActivity {
 
     public void my_statics(View v) {
         try {
-            Intent i = new Intent(this, MyStaticsActivity.class);
-            this.startActivity(i);
-        //lanzar el AsyncTask una vez que carga la DB
+            //lanzar el AsyncTask una vez que carga la DB
+            new MyStaticsTask().execute();
 
         } catch (Exception e) {
             Toast.makeText(MainActivity.this, "Error al cargar Mis Datos", Toast.LENGTH_SHORT).show();
         }
     }
-
 
 
     public void options(View v) {
@@ -38,7 +41,7 @@ public class MainActivity extends AppCompatActivity {
     public void about(View v) {
         try {
             Intent i = new Intent(MainActivity.this, AboutUsActivity.class);
-            MainActivity.this.startActivity(i);
+            this.startActivity(i);
 
         } catch (Exception e) {
             Toast.makeText(MainActivity.this, "Error al cargar About Us", Toast.LENGTH_SHORT).show();
@@ -58,8 +61,9 @@ public class MainActivity extends AppCompatActivity {
 
         protected Void doInBackground(String... strings) {
             try {
-
-            //carga la DB
+                //carga la DB
+                DataBaseNotas db = new DataBaseNotas( getApplicationContext() );
+                List<Asignatura> aaa = db.obtener();
 
             }catch(Exception e){
             }

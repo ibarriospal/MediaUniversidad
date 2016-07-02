@@ -8,7 +8,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="es.upm.dit.adsw.ej7.MyStaticsActivity"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     android:weightSum="1">
 
 
@@ -20,6 +20,19 @@
         android:onClick="newAsignatura"
         android:layout_gravity="right"
         android:singleLine="false" />
+
+    <ListView
+        android:layout_width="215dp"
+        android:layout_height="match_parent"
+        android:id="@+id/listView" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="76dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/mediaText"
+        android:layout_row="3"
+        android:layout_column="0" />
 
 
 </LinearLayout>

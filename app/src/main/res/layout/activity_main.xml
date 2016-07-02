@@ -41,11 +41,12 @@
         android:layout_marginTop="84dp" />
 
     <ProgressBar
-        style="?android:attr/progressBarStyleSmall"
         android:layout_width="49dp"
         android:layout_height="wrap_content"
         android:id="@+id/progressBar"
         android:layout_gravity="center_horizontal"
-        android:layout_weight="0.10" />
+        android:layout_weight="0.10"
+        android:visibility="invisible"/>
+
 
 </LinearLayout>

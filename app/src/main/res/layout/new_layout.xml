@@ -25,17 +25,27 @@
         android:layout_height="wrap_content"
         android:id="@+id/editTextNota" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Créditos asignatura"
+        android:id="@+id/textViewEct" />
+
+    <EditText
+        android:layout_width="157dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/editTextEct" />
+
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Guardar"
-        android:onClick="save"
-        android:id="@+id/buttonSave" />
+        android:id="@+id/botonSave"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Cancelar"
-        android:onClick="cancel"
-        android:id="@+id/buttonCancel" />
+        android:id="@+id/botonCancel"/>
 </LinearLayout>
