@@ -22,51 +22,50 @@ public class DataBaseNotas extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
-    public static final String TABLA_NOTAS = "notas";
-    public static final String COLUMNA_ID = "_id";
-    public static final String COLUMNA_ASIGNATURA = "asignatura";
-    public static final String COLUMNA_NOTA = "nota";
-    public static final String COLUMNA_ECT = "ect";
-    public static final String COLUMNA_NXE = "producto";
+    public static final String SUBJECT_TABLE = "notas";
+    public static final String ID_ROW = "_id";
+    public static final String SUBJECT_ROW = "subject";
+    public static final String MARK_ROW = "mark";
+    public static final String ECT_ROW = "ect";
+    public static final String NXE_ROW = "product";
 
 
-    private static final String SQL_CREAR = "create table "
-            + TABLA_NOTAS + "("
-                + COLUMNA_ID + " integer primary key autoincrement, "
-                + COLUMNA_ASIGNATURA + " text not null, "
-                + COLUMNA_NOTA + " real not null, "
-                + COLUMNA_ECT + " real not null, "
-                + COLUMNA_NXE + " real not null);";
+    private static final String SQL_CREATE = "create table "
+            + SUBJECT_TABLE + "("
+                + ID_ROW + " integer primary key autoincrement, "
+                + SUBJECT_ROW + " text not null, "
+                + MARK_ROW + " real not null, "
+                + ECT_ROW + " real not null, "
+                + NXE_ROW + " real not null);";
 
 
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL(SQL_CREAR);
+        db.execSQL(SQL_CREATE);
     }
 
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion){
     }
 
-
-    public void insertar(Asignatura asignatura){
+    public void insert(Subject subject){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
 
-        values.put(COLUMNA_ASIGNATURA, asignatura.getNombre());
-        values.put(COLUMNA_NOTA, asignatura.getNota());
-        values.put(COLUMNA_ECT, asignatura.getEct());
-        values.put(COLUMNA_NXE, asignatura.getNxe());
+        values.put(SUBJECT_ROW, subject.getName());
+        values.put(MARK_ROW, subject.getMark());
+        values.put(ECT_ROW, subject.getEct());
+        values.put(NXE_ROW, subject.getNxe());
 
-        db.insert(TABLA_NOTAS, null,values);
+        db.insert(SUBJECT_TABLE, null,values);
         db.close();
     }
 
-    public List<Asignatura> obtener(){
+    public List<Subject> get(){
 
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {COLUMNA_ID, COLUMNA_ASIGNATURA, COLUMNA_NOTA, COLUMNA_ECT, COLUMNA_NXE};
+        String[] projection = {ID_ROW, SUBJECT_ROW, MARK_ROW, ECT_ROW, NXE_ROW};
 
         Cursor cursor =
-                db.query(TABLA_NOTAS,
+                db.query(SUBJECT_TABLE,
                         projection,
                         //  " _id = ?",
                         //new String[] { String.valueOf(id) },
@@ -77,48 +76,45 @@ public class DataBaseNotas extends SQLiteOpenHelper {
                         null,
                         null);
 
-        List<Asignatura> aaa = new ArrayList<>();
+        List<Subject> data = new ArrayList<>();
 
         if (cursor != null) {
             cursor.moveToFirst();
 
             while (cursor.moveToNext()) {
-                String nombre = cursor.getString(1);
-                Float nota = Float.valueOf(cursor.getString(2));
+                String name = cursor.getString(1);
+                Float mark = Float.valueOf(cursor.getString(2));
                 Float ect = Float.valueOf(cursor.getString(3));
                 Double nxe = Double.parseDouble(cursor.getString(4));
-                Asignatura a = new Asignatura(nombre, nota, ect, nxe);
-                aaa.add(a);
+                Subject subject = new Subject(name, mark, ect, nxe);
+                data.add(subject);
             }
         }
 
-        //System.out.println("Asignatura " + cursor.getString(1));
-        //System.out.println("Nota " + cursor.getString(2));
         db.close();
-        return aaa;
+        return data;
     }
 
-    public void editar (Asignatura asignatura, int id){
+    public void edit (Subject subject, int id){
 
         SQLiteDatabase db = this.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put("asignatura",asignatura.getNombre());
-        values.put("nota",asignatura.getNota());
-        values.put("ect", asignatura.getEct());
+        values.put("asignatura", subject.getName());
+        values.put("nota", subject.getMark());
+        values.put("ect", subject.getEct());
 
-        int i = db.update(TABLA_NOTAS,
+        int i = db.update(SUBJECT_TABLE,
                 values,
                 " _id = ?",
                 new String[] { String.valueOf( id ) });
         db.close();
     }
 
-
-    public boolean eliminar(int id) {
+    public boolean delete(int id) {
         SQLiteDatabase db = this.getWritableDatabase();
         try{
-            db.delete(TABLA_NOTAS,
+            db.delete(SUBJECT_TABLE,
                     " _id = ?",
                     new String[] { String.valueOf (id ) });
             db.close();
@@ -129,14 +125,14 @@ public class DataBaseNotas extends SQLiteOpenHelper {
         }
     }
 
-    public float obtenerECT() {
+    public float getECT() {
 
         Float ect = new Float(0);
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {COLUMNA_ECT};
+        String[] projection = {ECT_ROW};
 
         Cursor cursor =
-                db.query(TABLA_NOTAS,
+                db.query(SUBJECT_TABLE,
                         projection,
                         //  " _id = ?",
                         //new String[] { String.valueOf(id) },
@@ -156,20 +152,18 @@ public class DataBaseNotas extends SQLiteOpenHelper {
             }
         }
 
-        //System.out.println("Asignatura " + cursor.getString(1));
-        //System.out.println("Nota " + cursor.getString(2));
         db.close();
         return ect;
     }
 
-    public double obtenerNXE() {
+    public double getNXE() {
 
         Double nxe = new Double(0);
         SQLiteDatabase db = this.getReadableDatabase();
-        String[] projection = {COLUMNA_NXE};
+        String[] projection = {NXE_ROW};
 
         Cursor cursor =
-                db.query(TABLA_NOTAS,
+                db.query(SUBJECT_TABLE,
                         projection,
                         //  " _id = ?",
                         //new String[] { String.valueOf(id) },
@@ -188,11 +182,7 @@ public class DataBaseNotas extends SQLiteOpenHelper {
             }
         }
 
-        //System.out.println("Asignatura " + cursor.getString(1));
-        //System.out.println("Nota " + cursor.getString(2));
         db.close();
         return nxe;
     }
-
-
 }

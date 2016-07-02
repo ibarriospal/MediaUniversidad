@@ -13,5 +13,4 @@ public class AboutUsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.about_layout);
     }
-
 }

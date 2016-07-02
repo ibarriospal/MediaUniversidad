@@ -23,19 +23,19 @@ public class NewAsignaturaActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.new_layout);
 
-        Button botonSave = (Button) findViewById(R.id.botonSave);
-        Button botonCancel = (Button) findViewById(R.id.botonCancel);
+        Button buttonSave = (Button) findViewById(R.id.botonSave);
+        Button buttonCancel = (Button) findViewById(R.id.botonCancel);
 
 
-        botonSave.setOnClickListener(new View.OnClickListener() {
+        buttonSave.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {
                 // Si el EditText no está vacío recogemos el resultado.
                 // Guardamos el texto del EditText en un String.
 
-                EditText nombre = (EditText) findViewById(R.id.editTextAsignatura);
-                EditText nota = (EditText) findViewById(R.id.editTextNota);
+                EditText name = (EditText) findViewById(R.id.editTextAsignatura);
+                EditText mark = (EditText) findViewById(R.id.editTextNota);
                 EditText ect = (EditText) findViewById(R.id.editTextEct);
 
                 Float n;
@@ -43,11 +43,11 @@ public class NewAsignaturaActivity extends AppCompatActivity {
                 Double nxe;
 
                 try {
-                    n = Float.valueOf(nota.getText().toString());
+                    n = Float.valueOf(mark.getText().toString());
                     e = Float.valueOf(ect.getText().toString());
                     nxe = (double) (n*e);
 
-                    String a = nombre.getText().toString();
+                    String a = name.getText().toString();
 
                     if (n > 10 || n < 0 || n.isNaN() || n == null || n.toString() == "" || nxe == null || nxe.toString() == "") {
                         Toast.makeText(NewAsignaturaActivity.this, "Introduce nota válida [0-10]", Toast.LENGTH_SHORT).show();
@@ -57,9 +57,9 @@ public class NewAsignaturaActivity extends AppCompatActivity {
                         Toast.makeText(NewAsignaturaActivity.this, "Introduce créditos válidos", Toast.LENGTH_SHORT).show();
                     } else {
                         //save nueva en la DB
-                        Asignatura asignatura = new Asignatura(a, n, e, nxe);
+                        Subject subject = new Subject(a, n, e, nxe);
                         DataBaseNotas db = new DataBaseNotas(getApplicationContext());
-                        db.insertar(asignatura);
+                        db.insert(subject);
                         finish();
 
                         Toast.makeText(NewAsignaturaActivity.this, "Nota guardada", Toast.LENGTH_SHORT).show();
@@ -75,7 +75,7 @@ public class NewAsignaturaActivity extends AppCompatActivity {
 
 
         // Definimos el listener que ejecutará el método onClick del botón cancelar.
-        botonCancel.setOnClickListener(new View.OnClickListener() {
+        buttonCancel.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View v) {

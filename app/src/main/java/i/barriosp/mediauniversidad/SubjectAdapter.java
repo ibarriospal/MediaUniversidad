@@ -12,13 +12,13 @@ import java.util.List;
 /**
  * Created by nacho on 17/6/16.
  */
-public class AsignaturaAdapter extends ArrayAdapter{
+public class SubjectAdapter extends ArrayAdapter{
 
     private Activity context;
     private List data;
     private int id;
 
-    public AsignaturaAdapter(Context context, int i, List<Asignatura> list) {
+    public SubjectAdapter(Context context, int i, List<Subject> list) {
         super(context, i, list);
         this.id = i;
         this.context =  (Activity) context;
@@ -31,16 +31,16 @@ public class AsignaturaAdapter extends ArrayAdapter{
             convertView = ((Activity)this.context).getLayoutInflater().inflate(this.id, parent, false);
         }
 
-        Asignatura asignatura = (Asignatura) this.data.get(position);
+        Subject subject = (Subject) this.data.get(position);
 
-        TextView name = (TextView) convertView.findViewById(R.id.nameAdap);
-        name.setText(asignatura.getNombre());
+        TextView nameTxtView = (TextView) convertView.findViewById(R.id.nameAdap);
+        nameTxtView.setText(subject.getName());
 
-        TextView nota = (TextView) convertView.findViewById(R.id.notaAdap);
-        nota.setText("Calificación: " + Float.toString(asignatura.getNota()));
+        TextView markTxtView = (TextView) convertView.findViewById(R.id.notaAdap);
+        markTxtView.setText("Calificación: " + Float.toString(subject.getMark()));
 
-        TextView ect = (TextView) convertView.findViewById(R.id.ectAdap);
-        ect.setText(Float.toString(asignatura.getEct()) + " ECTs");
+        TextView ectTxtView = (TextView) convertView.findViewById(R.id.ectAdap);
+        ectTxtView.setText(Float.toString(subject.getEct()) + " ECTs");
 
         return convertView;
     }

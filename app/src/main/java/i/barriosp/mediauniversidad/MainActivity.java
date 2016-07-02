@@ -14,8 +14,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-   private List<Asignatura> aaa;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             try {
                 //carga la DB
                 DataBaseNotas db = new DataBaseNotas( getApplicationContext() );
-                List<Asignatura> aaa = db.obtener();
+                List<Subject> data = db.get();
 
             }catch(Exception e){
             }
@@ -79,5 +77,4 @@ public class MainActivity extends AppCompatActivity {
             MainActivity.this.startActivity(i);
         }
     }
-
 }
